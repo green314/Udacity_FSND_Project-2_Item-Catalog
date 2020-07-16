@@ -1,0 +1,42 @@
+{% extends "navbar.html" %}
+{% block title %}Add Genre{% endblock %}
+
+{% block content %}
+    <div class="container" style="position: absolute; left: 25%">
+        <div class="row" style="margin-top: 35px">
+            <div class="col-md-7">
+               <h1 style="margin-left: 25%">Create New Genre</h1>
+               <form name="new-genre" method="POST">
+                    <div class="form-group">
+                      <input name="new-genre-name" type="text" class="form-control" required>
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        class="btn" 
+                        style="background-color: #1f1f7a; 
+                            border-color:#1f1f7a; 
+                            font-size: 14px; 
+                            color: white; 
+                            height: 75px; 
+                            width: 180px;
+                            margin-left: 22%;">
+                        </i>Submit</button>
+                    <a href="{{ url_for('home') }}">
+                        <button 
+                            type="button" 
+                            class="btn" 
+                            style="background-color: red;
+                                border-color: red; 
+                                font-size: 14px; 
+                                color: white; 
+                                height: 75px; 
+                                width: 180px;">
+                            </i>Cancel</button>
+                    </a>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "navbar.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container sections">
+    <div class="row">
+      <div class="col-md-32">
+          <h1 style="padding-top: 30px;
+                margin-left: 277px;
+                padding-bottom: 0px;">
+              FSND Project 2: Book Catalog App</h1>
+          <p style="padding-bottom: 20px;
+                text-align: centre;">
+            
+            <br>In this web app, you can catalog and categorize books, either by genre or as uncategorized books. Click on a specific genre or book to view, add, or delete books. 
+            
+            <br><br>In order to add a book by a specific genre, select the genre for which you are trying to create a book and select 
+            'Add Book'; if you wish to make a book that is not assigned to a specific genre, create the book from the home page.
+            
+          </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-36">
+        <a href="{{ url_for('add_genre') }}">
+            <button 
+              class="btn"
+              style="background-color: #1f1f7a;
+                margin-left: 170px;
+                border-color: #1f1f7a;
+                font-size: 14px;
+                color: white;
+                height: 75px;
+                width: 350px;
+                border-radius: 30px;">
+              Add Genre</button></a>
+        <a href="{{ url_for('add_book') }}">
+            <button
+              class="btn"
+              style="margin-left: 10px; 
+                background-color: #1f1f7a;
+                border-color: #1f1f7a;
+                font-size: 14px;
+                color: white;
+                height: 75px;
+                width: 350px;
+                border-radius: 30px;
+                margin-left: 120px;">
+              Add Book</button></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container sections">  
+            <div class="row" style="text-align: center;">
+              <div
+                class="col-md-4"
+                style="background-color: white;
+                  margin-left: 150px;
+                  margin-top: 50px;
+                  padding-top: 8px;
+                  margin-bottom: 10px;
+                  border-top: 2px solid black;
+                  border-bottom: 2px solid black;">
+                <h2>Genres</h2><hr>
+                {% for genre in genres %}
+                  <a href="{{ url_for('show_books_in_genre', genre_id=genre.id) }}"><p>{{ genre.name }}</p></a>
+                {% endfor %}
+              </div>
+              
+              <div class="offset-md-1"></div>
+
+              <div 
+                class="col-md-4"
+                style="background-color: white;
+                  margin-top: 50px;
+                  padding-top: 8px;
+                  margin-bottom: 10px;
+                  border-top: 2px solid black;
+                  border-bottom: 2px solid black;">
+                <h2>Books</h2><hr>
+                {% for book in books %}
+                  <a href="{{ url_for('view_book', book_id=book.id) }}"><p>{{ book.name }}</p></a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+</div>
+{% endblock %}

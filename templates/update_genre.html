@@ -1,0 +1,44 @@
+{% extends "navbar.html" %}
+{% block title %}Edit Genre{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row" style="margin-top: 20px; margin-left: 27%;">
+            <div class="col-md-7">
+               <h1 style="margin-left: 125px;">Edit genre: {{ genre.name }}</h1>
+
+               <form name="new-genre" method="POST">
+                    <div class="form-group">
+                      <input name="name" type="text" class="form-control" required>
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        class="btn" 
+                        style="background-color: yellow;
+                            border-color: yellow;
+                            font-size: 14px;
+                            color: black;
+                            height: 75px; 
+                            width: 180px;
+                            margin-left: 40px;">
+                        </i>Submit</button>
+                   
+                    <a href="{{ url_for('home') }}">
+                        <button 
+                            type="button" 
+                            class="btn" 
+                            style="background-color: #1f1f7a; 
+                                border-color: #1f1f7a; 
+                                font-size: 14px; 
+                                color: white; 
+                                height: 75px; 
+                                width: 180px;">
+                            </i>Cancel</button>
+                    </a>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

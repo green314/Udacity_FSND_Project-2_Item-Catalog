@@ -1,0 +1,44 @@
+{% extends "navbar.html" %}
+{% block title %}All Books{% endblock %}
+
+{% block content %}
+    <div class="container" style="position: absolute; margin-left: 32%; text-align: center; display: inline-block">
+        <div class="col-md-4">
+            <div class="row" style="margin-top: 35px; text-align: center;">
+                <h1 style="text-align: center; margin: auto;">{{ book.name }}</h1>
+            </div>
+            <div class="row">
+                    <h6><i class="far fa-user" style="margin-top: 20px; margin-bottom: 20px; margin-left: 40px;"></i> {{ book.user_id }}<i class="fas fa-tag" style="margin-left:15px"></i> {{ genre.name }}</i></h6>
+                </div>
+            <div class="row" style="margin-top: 2%">
+                    <p style="text-align: center;">{{ book.description }}</p>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <form>
+                    <a href="{{ url_for('edit_book', book_id=book.id) }}">
+                        <button 
+                            type="button" 
+                            class="btn" 
+                            style="background-color: yellow;
+                                border-color: yellow;
+                                font-size: 14px; 
+                                color: black; 
+                                height: 75px; 
+                                width: 180px;">
+                            Edit</button></a>
+                    <a href="{{ url_for('delete_book', book_id=book.id) }}">
+                        <button 
+                            type="button" 
+                            class="btn" 
+                            style="background-color: red; 
+                                border-color: red; 
+                                font-size: 14px; 
+                                color: white; 
+                                height: 75px; 
+                                width: 180px;">
+                            Delete</button></a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

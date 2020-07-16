@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <script src="https://kit.fontawesome.com/fa83e570c6.js"></script>
+
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '731255797406579',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v6.0'
+            });
+        
+        FB.AppEvents.logPageView();   
+        
+        };
+  
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+    </script>
+
+<script>
+    
+function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+function FBlogin() {
+    FB.api('/me', function (response) {            
+        alert('You have successfully logged in, ' + response.name + "!");
+ });
+
+function fetchUserProfile()
+  {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me?fields=id,name,email,gender,birthday', function(response) {
+      console.log(response);
+      console.log('Successful login for: ' + response.name);
+      var profile = `<h1>Welcome {response.name}<h1>
+      <h2>Your email is ${response.email}</h2>
+      <h3>Your Birthday is ${response.birthday}</h3>`;
+      $("#status").append(profile);
+    });
+  }
+
+</script>
+
+
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+                <div class="alert alert-custom alert-dismissible show mb-0 text-center" style="background-color: yellow; color: black; font-weight: bold;" role="alert">
+            {{ message }}
+
+        {% endfor %}
+                </div>
+        {% endif %}
+    
+    {% endwith %}
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#52527a;">
+        <a class="navbar-brand" href="{{ url_for('home') }}"><i class="fas fa-book text-and-icon"></i></a>
+        </button>
+        
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+
+                <html>
+
+                    <a href="{{ url_for('facebook_login') }}">
+                        <button
+                        style="background-color: #4267B2; 
+                            border-color: #4267B2; 
+                            font-size: 14px; 
+                            font-weight: bold;
+                            margin-left: 15px;
+                            color: white;
+                            border-radius: 30px;
+                            font-family: HelveticaNeueW01-55Roma, HelveticaNeueW02-55Roma, HelveticaNeueW10-55Roma, sans-serif;
+                            height: 40px; width: 200px;"
+                        />
+
+                        <i 
+                            class="fab fa-facebook-f"
+                            style= "margin-right: 10px;"
+                        ></i>
+                        Log in With Facebook
+                        </i>
+                        </button>
+                    </a>
+                    
+                    <a href="{{ url_for('logout') }}">
+                        <button
+                        style="background-color: #4267B2; 
+                            border-color: #4267B2; 
+                            font-size: 14px; 
+                            font-weight: bold;
+                            margin-left: 15px;
+                            color: white;
+                            border-radius: 30px;
+                            font-family: HelveticaNeueW01-55Roma, HelveticaNeueW02-55Roma, HelveticaNeueW10-55Roma, sans-serif;
+                            height: 40px; width: 100px;"
+                        />
+                        </i>
+                        Log Out
+                        </i>
+
+                        </button>
+                    </a>
+
+
+            </html>
+          </div>        
+      </nav>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

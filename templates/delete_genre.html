@@ -1,0 +1,40 @@
+{% extends "navbar.html" %}
+{% block title %}Delete Genre{% endblock %}
+
+{% block content %}
+<div class="container" style="position: absolute; left: 35%">
+        <div class="col-md-12">
+            <div class="row" style="margin-top: 35px;">
+                <h1 style="margin-left: 75px;">Delete Genre</h1>
+            </div>
+            <div class="row" style="margin-top: 10px; text-align: center;">
+                    <h5>Delete book: {{genre.name}}?</h5>
+                </div>
+            <div class="row" style="margin-top: 10px;">
+                <form method="POST">
+                    <button
+                        type="submit"
+                        class="btn btn-danger"
+                        style="background-color: red;
+                            border-color:red;
+                            font-size: 14px;
+                            color: white;
+                            height: 75px;
+                            width: 180px;">
+                        Delete</button>
+                    <a href="{{ url_for('home') }}">
+                        <button 
+                            type="button" 
+                            class="btn btn-success" 
+                            style="background-color: #1f1f7a;
+                                border-color: #1f1f7a;
+                                font-size: 14px;
+                                color: white;
+                                height: 75px;
+                                width: 180px;">
+                            Cancel</button></a>
+                </form>
+            </div>
+        </div>
+</div>
+{% endblock %}

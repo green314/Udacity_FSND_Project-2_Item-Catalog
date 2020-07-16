@@ -1,0 +1,63 @@
+{% extends "navbar.html" %}
+{% block title %}View Books{% endblock %}
+
+{% block content %}
+    <div class="container sections" style="position: absolute; left: 27%">
+        <h1 style="margin-top: 20px;">{{ genre.name }} ({{ total }}{% if total == 1 %} book{% else %} books{% endif %})</h1>
+            <div class="row">
+
+              <div class="row">
+                <h6 style="margin-left: 35px; margin-bottom: 15px; margin-top: 15px;"><i class="fas fa-user"></i> {{ genre.user_id }}<i class="fas fa-tag" style="margin-left:15px"></i>{{ genre.name }}</i></h6>
+              </div>
+
+              <div class="col-md-12">
+                <a href="{{ url_for('update_genre', genre_id=genre.id) }}">
+                  <button 
+                    class="btn" 
+                    style="background-color: yellow; 
+                      border-color: yellow; 
+                      font-size: 14px; 
+                      color: black; 
+                      height: 75px; 
+                      width: 180px;">
+                    </i>Edit</button></a>
+                <a href="{{ url_for('add_book_by_genre', genre_id=genre.id) }}">
+                  <button 
+                    class="btn" 
+                    style="background-color: green; 
+                      border-color: green; 
+                      font-size: 14px; 
+                      color: white; 
+                      height: 75px; 
+                      width: 180px;">
+                    </i>Add book </button></a>
+                <a href="{{ url_for('delete_genre', genre_id=genre.id) }}">
+                  <button 
+                    class="btn" 
+                    style="background-color: red; 
+                      border-color: red; 
+                      font-size: 14px; 
+                      color: white; 
+                      height: 75px; 
+                      width: 180px;">
+                    </i>Delete</button></a>
+              </div>
+            </div>
+        
+        <div class="col-md-8" style="margin-top: 10px; width: 553px; text-align: center;">
+          {% if total == 0 %}
+          <p>No books are recorded in this genre.</p>
+          {% else %}
+          <table class="table table-hover">
+            <tbody>
+            {% for book in books %}
+              <tr>
+                <td><a href="{{ url_for('view_book', book_id=book.id) }}"><p>{{ book.name }}</p></a></td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          {% endif %}
+        </div>
+    </div>
+{% endblock %}

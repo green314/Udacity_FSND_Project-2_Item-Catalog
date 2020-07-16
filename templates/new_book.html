@@ -1,0 +1,48 @@
+{% extends "navbar.html" %}
+{% block title %}Add Item{% endblock %}
+
+{% block content %}
+    <div class="container" style="position: absolute; left: 25%">
+        <div class="row" style="margin-top: 35px;">
+            <div class="col-md-7">
+               <h1 style="margin-left: 24%;">Create a new book</h1>
+
+               <form method="POST">
+                    <div class="form-group">
+                      <label>Title</label>
+                      <input name="new-book-name" type="text" class="form-control" required>
+                    </div>              
+                    <div class="form-group">
+                      <label>Description</label>
+                      <textarea name="description" class="form-control"></textarea>
+                    </div>
+
+                    <button
+                      type="submit"
+                      class="btn" 
+                      style="background-color: #1f1f7a;
+                        border-color: #1f1f7a;
+                        font-size: 14px;
+                        color: white;
+                        height: 75px;
+                        width: 180px;
+                        margin-left: 21%;">
+                      </i>Submit</button>
+
+                    <a href="{{ url_for('home') }}">
+                        <button
+                          type="button" 
+                          class="btn" 
+                          style="background-color: red; 
+                            border-color: red; 
+                            font-size: 14px; 
+                            color: white; 
+                            height: 75px; 
+                            width: 180px;">
+                          </i>Cancel</button>
+                    </a>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
